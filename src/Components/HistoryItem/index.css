@@ -1,0 +1,38 @@
+.paragraph {
+  font-family: Roboto;
+  color: #475569;
+  font-size: 15px;
+}
+
+.list-style {
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.span {
+  font-family: Roboto;
+  color: #64748b;
+  margin-left: 10px;
+}
+
+.delete-image {
+  width: 15px;
+  height: 15px;
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.website-image {
+  height: 15px;
+  width: 15px;
+  margin-left: 30px;
+  margin-right: 10px;
+  margin-top: 17px;
+}
+
+.details-container {
+  display: flex;
+}
