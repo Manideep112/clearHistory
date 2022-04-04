@@ -20,7 +20,6 @@ class TotalHistory extends Component {
     } else {
       filteredList = list.filter(eachhistory => eachhistory.id !== id)
     }
-    console.log(filteredList)
     this.setState({list: filteredList})
   }
 
@@ -35,7 +34,9 @@ class TotalHistory extends Component {
         eachhistory.title.toLowerCase().includes(input.toLowerCase()),
       )
     } else {
-      filteredList = list
+      filteredList = list.filter(eachhistory =>
+        eachhistory.title.toLowerCase().includes(input.toLowerCase()),
+      )
     }
 
     const filteredLen = filteredList.length

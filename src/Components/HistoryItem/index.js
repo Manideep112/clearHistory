@@ -3,10 +3,11 @@ import './index.css'
 const HistoryItem = props => {
   const {values, deleteFun} = props
   const {id, timeAccessed, logoUrl, title, domainUrl} = values
-  console.log(id)
+
   const deleteHistoryItem = () => {
     deleteFun(id)
   }
+
   return (
     <li className="list-style">
       <div className="details-container">
