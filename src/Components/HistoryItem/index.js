@@ -1,28 +1,31 @@
 import './index.css'
 
 const HistoryItem = props => {
-  const {values, list, deleteFun} = props
+  const {values, deleteFun} = props
   const {id, timeAccessed, logoUrl, title, domainUrl} = values
-
+  console.log(id)
   const deleteHistoryItem = () => {
-    deleteFun(list, id)
+    deleteFun(id)
   }
-
   return (
     <li className="list-style">
       <div className="details-container">
         <p className="paragraph">{timeAccessed}</p>
-        <img src={logoUrl} alt="logoUrl" className="website-image" />
-        <p className="paragraph">
-          {title} <span className="span">{domainUrl}</span>
-        </p>
+        <img src={logoUrl} alt="domain logo" className="website-image" />
+        <div className="paragraph-container">
+          <p className="paragraph">{title}</p>
+          <p className="span">{domainUrl}</p>
+        </div>
       </div>
-      <img
-        src="https://assets.ccbp.in/frontend/react-js/delete-img.png"
-        alt="delete"
-        className="delete-image"
-        onClick={deleteHistoryItem}
-      />
+
+      <button className="button" type="button" testid="delete">
+        <img
+          src="https://assets.ccbp.in/frontend/react-js/delete-img.png"
+          alt="delete"
+          className="delete-image"
+          onClick={deleteHistoryItem}
+        />
+      </button>
     </li>
   )
 }

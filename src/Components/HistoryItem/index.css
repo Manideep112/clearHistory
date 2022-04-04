@@ -36,3 +36,12 @@
 .details-container {
   display: flex;
 }
+
+.button {
+  background-color: transparent;
+  border: none;
+}
+
+.paragraph-container {
+  display: flex;
+}

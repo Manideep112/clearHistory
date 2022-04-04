@@ -3,26 +3,42 @@ import './index.css'
 import HistoryItem from '../HistoryItem/index'
 
 class TotalHistory extends Component {
-  state = {input: '', list: 'nolist'}
+  state = {input: '', list: ''}
 
   userValue = event => {
     const inputText = event.target.value
     this.setState({input: inputText})
   }
 
-  delete = (list, id) => {
-    const filteredList = list.filter(eachhistory => eachhistory.id !== id)
+  delete = id => {
+    const {historyList} = this.props
+    const {list} = this.state
+    let filteredList
+
+    if (list === '') {
+      filteredList = historyList.filter(eachhistory => eachhistory.id !== id)
+    } else {
+      filteredList = list.filter(eachhistory => eachhistory.id !== id)
+    }
     console.log(filteredList)
+    this.setState({list: filteredList})
   }
 
   render() {
     const {historyList} = this.props
     const {input} = this.state
+    const {list} = this.state
+    let filteredList
 
-    const filteredList = historyList.filter(eachhistory =>
-      eachhistory.title.toLowerCase().includes(input.toLowerCase()),
-    )
+    if (list === '') {
+      filteredList = historyList.filter(eachhistory =>
+        eachhistory.title.toLowerCase().includes(input.toLowerCase()),
+      )
+    } else {
+      filteredList = list
+    }
 
+    const filteredLen = filteredList.length
     return (
       <div className="bg-container">
         <div className="search-container">
@@ -49,14 +65,19 @@ class TotalHistory extends Component {
         </div>
 
         <ul className="list-container">
-          {filteredList.map(eachhistory => (
-            <HistoryItem
-              values={eachhistory}
-              key={eachhistory.id}
-              list={historyList}
-              deleteFun={this.delete}
-            />
-          ))}
+          {filteredLen > 0 ? (
+            filteredList.map(eachhistory => (
+              <HistoryItem
+                values={eachhistory}
+                key={eachhistory.id}
+                deleteFun={this.delete}
+              />
+            ))
+          ) : (
+            <div className="nohistory">
+              <p className="nohistory-message">There is no history to show</p>
+            </div>
+          )}
         </ul>
       </div>
     )
